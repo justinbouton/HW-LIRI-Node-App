@@ -44,4 +44,4 @@ The purpose of this node app is to be able to search multiple APIs from a single
 
 `node liri.js random`
 
-* Returns song, movie or band from random.txt
+* Returns song, movie or band search from random.txt
