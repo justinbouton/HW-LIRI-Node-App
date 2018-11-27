@@ -46,20 +46,20 @@
 
 
 // Step 1
-//Declare required var for APIs: Node-Spotify-api, OMDBapi, bandsintown
-var Spotify = require("node-spotify-api");
+// Loads environment variables from .env
+require('dotenv').config() 
+const env = process.env
+
+//Declare required var for APIs: Node-Spotify-api, OMDBapi, bandsintown, dotenv
+const Spotify = require("node-spotify-api");
 
 // Input for switch
-var input1 = process.argv[2];
+const input1 = process.argv[2];
 
 // Store all of the arguments in an array
-var input2 = process.argv[3];
+const input2 = process.argv;
 
 // Create an empty variable for holding the song name
-var input2ConCat = "";
-
-var input2 = process.argv;
-
 var input2ConCat = "";
 
 // Loop through all the words in the node argument
@@ -67,7 +67,7 @@ for (var i = 3; i < input2.length; i++) {
     input2ConCat = input2ConCat + " " + input2[i];
   }
 
-console.log("70 Search: " + input2ConCat.trim())
+console.log("73 Search: " + input2ConCat.trim())
 
 // TODO // Create for loop to handle multiple words
 
@@ -95,10 +95,13 @@ switch (input1) {
 
 // If "songSearch" function is called
     function songSearch() {
-    //  console.log("Mode: " + input1 +" Search: " + input2)   
-        var spotify = new Spotify({
-            id: "d242dbfec5244fdbbdcc2e1769a3119c",
-            secret: "5ee46c631ee341d6a114e9e34eb4d85b"
+        
+        // console.log(".env ID: " + env.spotify_id)
+        // console.log(".env Key: " + env.spotify_secret)
+
+        spotify = new Spotify({
+            id: env.spotify_id, 
+            secret: env.spotify_secret
         });
 
         spotify
@@ -113,7 +116,6 @@ switch (input1) {
                 console.log('Error occurred: ' + err);
             });
         // TODO* If no song is provided then your program will default to "The Sign" by Ace of Base.
-
       };
 
 

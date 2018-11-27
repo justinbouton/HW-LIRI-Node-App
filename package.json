@@ -1,0 +1,25 @@
+{
+  "name": "HW-LIRI-Node-App",
+  "version": "1.0.0",
+  "description": "LIRI is similar to SIRI. LIRI on the other hand is _Language_ interpretation and recongnition interface. SIRI is _Speech_.",
+  "main": "LIRI-node-app.js",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "node-spotify-api": "^1.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justbouton/HW-LIRI-Node-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justbouton/HW-LIRI-Node-App/issues"
+  },
+  "homepage": "https://github.com/justbouton/HW-LIRI-Node-App#readme"
+}
