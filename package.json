@@ -5,7 +5,8 @@
   "main": "LIRI-node-app.js",
   "dependencies": {
     "dotenv": "^6.1.0",
-    "node-spotify-api": "^1.0.7"
+    "node-spotify-api": "^1.0.7",
+    "omdbapi": "^2.0.1"
   },
   "devDependencies": {},
   "scripts": {
