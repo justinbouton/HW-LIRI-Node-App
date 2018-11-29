@@ -4,6 +4,10 @@ LIRI is similar to SIRI. LIRI on the other hand is _Language_ interpretation and
 
 The purpose of this node app is to be able to search multiple APIs from a single CLI. Your search will hit either Spotify, OMDB or Bands in town.
 
+
+(Don't forget to run "npm init" in this folder first!)
+
+
 1. Search Spotify for a song:
 
 `node liri.js spotify <song name>`
