@@ -31,12 +31,7 @@ switch (input1) {
     break;
 
     case "movie":
-        if (!input2ConCat) {
-            console.log("fix me!"); // TODO // Return "Mr Nobody"
-            break;
-        } else {
-            movieSearch()
-        }
+        movieSearch()
     break;
 
     case "band":
@@ -83,21 +78,13 @@ switch (input1) {
             });
     };
 
-// UPGRADE // Make songCheck() with if statement that passes into songSearch() to reduce code.
-
-                // spotify
-                //     .search({ type: 'track', query: "The Sign Ace of Base" })
-                //     .then(function(data) {
-                //         console.log("ARTIST: " + JSON.stringify(data.tracks.items[0].artists[0].name))// Artist(s)
-                //         console.log("TITLE: " + JSON.stringify(data.tracks.items[0].name)) // Title
-                //         console.log("ALBUM: " + JSON.stringify(data.tracks.items[0].album.name)) // Album
-                //         console.log("CMD + DBL CLICK -> " + JSON.stringify(data.tracks.items[0].artists[0].external_urls.spotify)) // A link to preview the song
-                //     })                
-            // });
-    //   };
-
 // If "movieSearch" function is called
 function movieSearch() {
+    
+    if (input2ConCat.length === 0) {
+        input2ConCat = "Mr Nobody"; 
+    }
+
         request('http://www.omdbapi.com/?apikey='+ process.env.omdb_key +'&t=' + input2ConCat, function (error, response, body) {
             if (error) { // Print the error if one occurred
                 console.log('Error:', error)
@@ -124,7 +111,6 @@ function movieSearch() {
             console.log('Actors: ' + actors);
             console.log() // Spacer, blank line
     }); 
-// TODO // * If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
 }
 
 // If "bandsSearch" function is called
