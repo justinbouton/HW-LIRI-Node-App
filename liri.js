@@ -13,22 +13,21 @@ const fs = require('fs');
 const input1 = process.argv[2];
 
 // Store and join all of the process arguments
-const input2ConCat = process.argv.slice(3).join(" ");
+var input2ConCat = process.argv.slice(3).join(" ");
 
-// if input2ConCat does not have a value do not display Searching...
+// if input2ConCat does not have a value do not display Searching, instead show error and continue to switch statement.
 if (input2ConCat) {
-    console.log("Searching for:" + input2ConCat.trim())
+    console.log("\nSearching for " + input1 + ": " + input2ConCat.trim())
+} else {
+    var input1UpCase = input1.toUpperCase()
+    console.log('\nPLEASE INCLUDE A PARAMATER IN YOUR ' + input1UpCase + ' SEARCH \n\nMight we suggest:')
 }
 
 // Step 2
 //Create switch statment to handle requests song, movie, band
 switch (input1) {
     case "song":
-        if (!input2ConCat) {
-            console.log("PLEASE INCLUDE A TITLE IN YOUR SONG SEARCH")
-        } else {
-            songSearch();
-        }
+        songSearch()
     break;
 
     case "movie":
@@ -42,7 +41,7 @@ switch (input1) {
 
     case "band":
         if (!input2ConCat) {
-            console.log("PLEASE INCLUDE A NAME IN YOUR BAND SEARCH")
+            console.log("fix me too!")
         } else {
             bandsSearch()
         }
@@ -51,21 +50,26 @@ switch (input1) {
 
 // Step 3
 // If "songSearch" function is called
+    
     function songSearch() {
 
-        spotify = new Spotify({
-            id: env.spotify_id, 
-            secret: env.spotify_secret
-        });
+        if (input2ConCat.length === 0) {
+            input2ConCat = "The Sign Ace of Base"; 
+        }
+                spotify = new Spotify({
+                    id: env.spotify_id, 
+                    secret: env.spotify_secret
+                });
 
-        spotify
-            .search({ type: 'track', query: input2ConCat })
-            .then(function(data) {
-                console.log("ARTIST: " + JSON.stringify(data.tracks.items[0].artists[0].name))// Artist(s)
-                console.log("TITLE: " +JSON.stringify(data.tracks.items[0].name)) // Title
-                console.log("ALBUM: " +JSON.stringify(data.tracks.items[0].album.name)) // Album
-                console.log("CMD + DBL CLICK -> " + JSON.stringify(data.tracks.items[0].artists[0].external_urls.spotify)) // A link to preview the song
-            })
+                spotify
+                    .search({ type: 'track', query: input2ConCat })
+                    .then(function(data) {
+                        console.log("\nArtist: " + JSON.stringify(data.tracks.items[0].artists[0].name))// Artist(s)
+                        console.log("Title: " +JSON.stringify(data.tracks.items[0].name)) // Title
+                        console.log("Album: " +JSON.stringify(data.tracks.items[0].album.name)) // Album
+                        console.log("CMD + click -> " + JSON.stringify(data.tracks.items[0].artists[0].external_urls.spotify))
+                        console.log() // A link to preview the song
+                    })
             .catch(function(err) { // on err console err and suggest an artist to checkout.
                 console.log(" ")
                 console.log('Error occurred: ' + err);
@@ -76,22 +80,21 @@ switch (input1) {
                     id: env.spotify_id, 
                     secret: env.spotify_secret
                 });
-//////////
-// HELP // MAKE DRY // Function inside
-//////////
+            });
+    };
 
 // UPGRADE // Make songCheck() with if statement that passes into songSearch() to reduce code.
 
-                spotify
-                    .search({ type: 'track', query: "The Sign Ace of Base" })
-                    .then(function(data) {
-                        console.log("ARTIST: " + JSON.stringify(data.tracks.items[0].artists[0].name))// Artist(s)
-                        console.log("TITLE: " + JSON.stringify(data.tracks.items[0].name)) // Title
-                        console.log("ALBUM: " + JSON.stringify(data.tracks.items[0].album.name)) // Album
-                        console.log("CMD + DBL CLICK -> " + JSON.stringify(data.tracks.items[0].artists[0].external_urls.spotify)) // A link to preview the song
-                    })                
-            });
-      };
+                // spotify
+                //     .search({ type: 'track', query: "The Sign Ace of Base" })
+                //     .then(function(data) {
+                //         console.log("ARTIST: " + JSON.stringify(data.tracks.items[0].artists[0].name))// Artist(s)
+                //         console.log("TITLE: " + JSON.stringify(data.tracks.items[0].name)) // Title
+                //         console.log("ALBUM: " + JSON.stringify(data.tracks.items[0].album.name)) // Album
+                //         console.log("CMD + DBL CLICK -> " + JSON.stringify(data.tracks.items[0].artists[0].external_urls.spotify)) // A link to preview the song
+                //     })                
+            // });
+    //   };
 
 // If "movieSearch" function is called
 function movieSearch() {
@@ -111,14 +114,15 @@ function movieSearch() {
             let plot = results.Plot;
             let actors = results.Actors;
 
-            console.log('TITLE: ' + title);
-            console.log('YEAR: ' + year);
-            console.log('IMDB RATING: ' + imdbRating);
-            console.log('ROTTEN TOMATOES RATING: ' + rottenTomatoes);
-            console.log('COUNTRY OF PRODUCTION: ' + country);
-            console.log('LANGAUGE: ' + language);
-            console.log('PLOT: ' + plot);
-            console.log('ACTORS: ' + actors);
+            console.log('\nTitle: ' + title);
+            console.log('Year: ' + year);
+            console.log('IMDB rating: ' + imdbRating);
+            console.log('Rotten Tomatoes rating: ' + rottenTomatoes);
+            console.log('Country of production: ' + country);
+            console.log('Langauge: ' + language);
+            console.log('Plot: ' + plot);
+            console.log('Actors: ' + actors);
+            console.log() // Spacer, blank line
     }); 
 // TODO // * If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
 }
