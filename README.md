@@ -13,10 +13,10 @@ The purpose of this node app is to be able to search multiple APIs from a single
 `node liri.js song <song name>`
 
 * Returns the following:
-    * Artist(s)
-    * Title
-    * Album
-    * A link to preview the song
+    * Artist(s).
+    * Title.
+    * Album.
+    * A link to preview the song.
 
 
 2. Search OMDB for a moive:
@@ -39,13 +39,13 @@ The purpose of this node app is to be able to search multiple APIs from a single
 `node liri.js band <band name>`
 
 * Returns the following:
-    * Name of the venue
-    * Venue location
-    * Date of the event MM/DD/YY
+    * Name of the venue.
+    * Venue location.
+    * Date of the event MM/DD/YY.
 
 
 4. Random search:
 
 `node liri.js random`
 
-* Returns item from song from random.txt
+* Performs songSearch() pulls artist from random.txt file.
