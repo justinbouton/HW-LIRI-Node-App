@@ -48,4 +48,4 @@ The purpose of this node app is to be able to search multiple APIs from a single
 
 `node liri.js random`
 
-* Returns item from random.txt
+* Returns item from song from random.txt
