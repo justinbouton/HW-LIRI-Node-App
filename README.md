@@ -10,7 +10,7 @@ The purpose of this node app is to be able to search multiple APIs from a single
 
 1. Search Spotify for a song:
 
-`node liri.js spotify <song name>`
+`node liri.js song <song name>`
 
 * Returns the following:
     * Artist(s)
@@ -21,7 +21,7 @@ The purpose of this node app is to be able to search multiple APIs from a single
 
 2. Search OMDB for a moive:
 
-`node liri.js omdb <movie title>`
+`node liri.js movie <movie title>`
 
 * Returns the following:
     * Title of the movie.
@@ -36,7 +36,7 @@ The purpose of this node app is to be able to search multiple APIs from a single
 
 3. Search for bands in town:
 
-`node liri.js bands <band name>`
+`node liri.js band <band name>`
 
 * Returns the following:
     * Name of the venue
@@ -48,4 +48,4 @@ The purpose of this node app is to be able to search multiple APIs from a single
 
 `node liri.js random`
 
-* Returns song, movie or band search from random.txt
+* Returns item from random.txt
